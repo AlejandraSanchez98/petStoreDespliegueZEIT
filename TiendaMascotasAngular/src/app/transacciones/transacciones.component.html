@@ -1,0 +1,198 @@
+<div class="fondo">
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="push" [(opened)]="opened" style="background-color:rgba(231, 235, 241, 0.98);">
+      <img class="logoPaginas" src="../../assets/img/logoPaginas.png">
+      <mat-list role="list" style="margin-top: 30px;">
+        <mat-list-item role="listitem" routerLink="/clientes">
+          <mat-icon>group</mat-icon>&nbsp;&nbsp;Usuarios
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/productos">
+          <mat-icon>storefront</mat-icon>&nbsp;&nbsp;Productos
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/metodoPago">
+          <mat-icon>local_atm</mat-icon>&nbsp;&nbsp;Metodo De Pago
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/transacciones">
+          <mat-icon>sync_alt</mat-icon>&nbsp;&nbsp;Transacciones
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/devoluciones">
+          <mat-icon>rotate_90_degrees_ccw</mat-icon>&nbsp;&nbsp;Devoluciones
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/compras">
+          <mat-icon>local_atm</mat-icon>&nbsp;&nbsp;Compras Proveedor
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/carrito">
+          <mat-icon>shopping_cart</mat-icon>&nbsp;&nbsp;Carrito
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/envios">
+          <mat-icon>storefront</mat-icon>&nbsp;&nbsp;Envios
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/reportes">
+          <mat-icon>assignment</mat-icon>&nbsp;&nbsp;Reportes
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/accesos">
+          <mat-icon>lock_open</mat-icon>&nbsp;&nbsp;Bitacora De Accesos
+        </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content style="background-color: rgba(247, 247, 247, 0.95);">
+      <mat-toolbar class="toolbar">
+        <mat-toolbar-row>
+          <button mat-button (click)="sidenav.toggle()" style="font-size:20px; padding-top:5px;" matTooltip="Menú Principal">MENÚ&nbsp;<mat-icon style="font-size:30px; padding-bottom: 36px;"> menu_open</mat-icon></button>
+          <span class="example-spacer"></span>
+          <h4 style="padding-top:5px; float: left;cursor:default;"><b>Bienvenido {{usuarioEnSesion}}</b></h4>
+          <div ngbDropdown role="group">
+            <button mat-button ngbDropdownToggle style="margin-left: 20px;background-color: #466c90;" matTooltip="Cerrar Sesión"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">exit_to_app</mat-icon></button>
+            <div class="dropdown-menu" ngbDropdownMenu style="padding:20px">
+              <h6 ngbDropdownItem style="margin-top:20px;margin-bottom:20px;float: right;color: #15376b;cursor:default"><b>Tipo de usuario: </b> {{rolUsuario}}</h6>
+              <button ngbDropdownItem (click)=cerrarSesion() style="color: white;background-color:rgb(38, 83, 128);border-radius:3px;text-align:center">Cerrar Sesión</button>
+            </div>
+          </div>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <br>
+      <br>
+      <mat-card class="cardTab">
+        <h2 style="font-weight: bold; color:#002255d9;">Transacciones&nbsp;&nbsp;<mat-icon style="font-size: 40px;">sync_alt</mat-icon></h2>
+        <mat-tab-group>
+          <mat-tab>
+            <ng-template  mat-tab-label>
+              <mat-icon  class = "tabIcono"> credit_card </mat-icon>Informe Ventas
+            </ng-template>
+            <div class="tablaTab1">
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" matSort>
+                  <ng-container matColumnDef="idVenta">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                    <td mat-cell *matCellDef="let row"> {{row.idVenta}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="montoConIVA">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Monto Con IVA </th>
+                    <td mat-cell *matCellDef="let row"> ${{row.montoConIVA}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="cantidadTotalProductos">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad Total De Productos </th>
+                    <td mat-cell *matCellDef="let row"> {{row.cantidadTotalProductos}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="fechaRegistro">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha De La Venta </th>
+                    <td mat-cell *matCellDef="let row"> {{row.fechaRegistro | date : "dd/MM/y"}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="nombreUsuario">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Vendedor </th>
+                    <td mat-cell *matCellDef="let row"> {{row.nombreUsuario}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="nombreCliente">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Cliente </th>
+                    <td mat-cell *matCellDef="let row"> {{row.nombreCliente}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+                    <td mat-cell *matCellDef="let row">
+                      <button mat-button style="margin-left: 10px;background-color:rgb(49, 171, 81);color:white;" matTooltip="Más Información" (click)="openVentas(contentVenta,row.idVenta)">
+                        <mat-icon style="color: white">announcement</mat-icon>&nbsp;&nbsp;&nbsp;Más Información
+                      </button>
+                    </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator #MatPaginatorVentas [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" style="background-color: #abaeb1;"></mat-paginator>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template  mat-tab-label>
+              <mat-icon  class="tabIcono"> local_grocery_store </mat-icon>Informe Compras
+            </ng-template>
+            <div class="tablaTab1">
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dsCompras" matSort>
+                  <ng-container matColumnDef="idCompra">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                    <td mat-cell *matCellDef="let row"> {{row.idCompra}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="montoTotal">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Monto Total</th>
+                    <td mat-cell *matCellDef="let row"> ${{row.montoTotal}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="fechaRegistro">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha De La Compra </th>
+                    <td mat-cell *matCellDef="let row"> {{row.fechaRegistro | date : "dd/MM/y"}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="nombreProveedor">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Proveedor </th>
+                    <td mat-cell *matCellDef="let row"> {{row.nombreProveedor}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="nombreUsuario">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Vendedor </th>
+                    <td mat-cell *matCellDef="let row"> {{row.nombreUsuario}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+                    <td mat-cell *matCellDef="let row">
+                      <button mat-button style="margin-left: 10px;background-color:rgb(49, 171, 81);color:white;" matTooltip="Más Información" (click)="openCompras(content,row.idCompra)">
+                        <mat-icon style="color: white">announcement</mat-icon>&nbsp;&nbsp;&nbsp;Más Información
+                      </button>
+                    </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumnsCompras"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumnsCompras;"></tr>
+                </table>
+                <mat-paginator #MatPaginatorCompras [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" style="background-color: #abaeb1;"></mat-paginator>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card>
+      <ng-template #content let-modal>
+        <div class="modal-header" style="background-color: #2d5277;">
+          <h3 class="modal-title" id="modal-basic-title" style="color: white;text-align:center;margin-left: auto;"> Detalles De La Compra </h3>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="background-color: white">
+          <div *ngFor="let i of arregloComprasDetalles">
+            <p style="margin-top: 25px;margin-left: 17%;font-size: 18px;">
+              <b>ID Compra: </b> {{i.idCompra}}
+              <br><b>Vendedor: </b> {{i.nombreUsuario}}
+              <br><b>Proveedor: </b> {{i.nombreProveedor}}
+              <br><b>Fecha : </b> {{i.fechaRegistro | date: 'dd-MM-yyyy HH:mm:ss'}}
+              <br><b>Productos : </b> {{i.productos}}
+              <br><b>Cantidad de Productos: </b> {{i.cantidadProducto}}
+              <br><b>Monto Total: </b> {{i.montoTotal}}
+            </p>
+          </div>
+        </div>
+      </ng-template>
+      <!-- Modal ventas -->
+      <ng-template #contentVenta let-modal>
+        <div class="modal-header" style="background-color: #2d5277;">
+          <h3 class="modal-title" id="modal-basic-title" style="color: white;text-align:center;margin-left: auto;"> Detalles De La Venta </h3>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="background-color: white">
+          <div *ngFor="let i of arregloVentasDetalles">
+            <p style="margin-top: 25px;margin-left:17%;font-size: 18px;">
+              <b>ID Venta: </b> {{i.idVenta}}
+              <br><b>Vendedor: </b> {{i.nombreUsuario}}
+              <br><b>Cliente: </b> {{i.nombreCliente}}
+              <br><b>Fecha : </b> {{i.fechaRegistro | date: 'dd-MM-yyyy HH:mm:ss'}}
+              <br><b>Productos : </b> {{i.productos}}
+              <br><b>Cantidad de Productos: </b> {{i.cantidadTotalProductos}}
+              <br><b>Monto sin IVA: </b> {{i.montoSinIVA}}
+              <br><b>IVA: </b> {{i.IVA}}
+              <br><b>Monto con IVA: </b> {{i.montoConIVA}}
+              <br><b>Tipo de Pago: </b> {{i.tipoPago}}
+              <br><b>Pago: </b> {{i.pago}}
+              <br><b>Cambio: </b> {{i.cambio}}
+            </p>
+          </div>
+        </div>
+      </ng-template>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,112 @@
+<h2 style="font-weight: bold; color:#002255d9;margin-top:20px;">Proveedores&nbsp;&nbsp;<mat-icon style="font-size: 40px;">local_shipping</mat-icon></h2>
+<mat-card class="card">
+  <div class="container">
+    <div class="row">
+      <div class="col-9">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar :">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <button mat-button style="background-color: rgb(38, 83, 128);height: 50px;" matTooltip="Agregar Proveedor" (click)=" openAgregar(content)">
+          <mat-icon style="color: white">add</mat-icon> Agregar Proveedor
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-card>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="idProveedor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.idProveedor}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nombreProveedor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+      <td mat-cell *matCellDef="let row"> {{row.nombreProveedor}} </td>
+    </ng-container>
+    <ng-container matColumnDef="direccionProveedor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Dirección </th>
+      <td mat-cell *matCellDef="let row"> {{row.direccionProveedor}} </td>
+    </ng-container>
+    <ng-container matColumnDef="telefonoProveedor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </th>
+      <td mat-cell *matCellDef="let row"> {{row.telefonoProveedor}} </td>
+    </ng-container>
+    <ng-container matColumnDef="ciudadProveedor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Ciudad </th>
+      <td mat-cell *matCellDef="let row"> {{row.ciudadProveedor}} </td>
+    </ng-container>
+    <ng-container matColumnDef="emailProveedor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+      <td mat-cell *matCellDef="let row"> {{row.emailProveedor}} </td>
+    </ng-container>
+    <ng-container matColumnDef="RFCProveedor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> RFC </th>
+      <td mat-cell *matCellDef="let row"> {{row.RFCProveedor}} </td>
+    </ng-container>
+    <ng-container matColumnDef="razonSocial">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Razón Social </th>
+      <td mat-cell *matCellDef="let row"> {{row.razonSocial}} </td>
+    </ng-container>
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-mini-fab style="background-color:rgb(222, 95, 5);" matTooltip="Editar Proveedor" (click)="openEditar(content, row.idProveedor, row.nombreProveedor, row.direccionProveedor,row.telefonoProveedor,row.ciudadProveedor,row.emailProveedor,row.RFCProveedor,row.razonSocial)">
+          <mat-icon style="color: white">edit_attributes</mat-icon>
+        </button>
+        <button mat-mini-fab style="margin-left: 10px;background-color: rgb(160, 8, 8);" matTooltip="Eliminar Proveedor" (click)="eliminarProveedor(row.idProveedor)">
+          <mat-icon style="color: white">delete_sweep</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" style="background-color: #abaeb1;"></mat-paginator>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header" style="background-color:#2d5277;">
+    <h3 class="modal-title" id="modal-basic-title" style="color: white;"> {{titulo}} </h3>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="background-color: rgba(241, 244, 247, 0.72);">
+    <form class="form" [formGroup]="frmProveedores" style="margin-left: 30px; margin-right: 30px;">
+      <input formControlName="idProveedor" type="hidden">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Nombre" formControlName="nombreProveedor" type="text" style="color: #002235;">
+      </mat-form-field>
+      <label *ngIf="frmProveedores.controls.nombreProveedor.invalid && frmProveedores.controls.nombreProveedor.dirty">Este campo es obligatorio</label>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Direccion" formControlName="direccionProveedor" type="text" style="color: #002235;">
+      </mat-form-field>
+      <label *ngIf="frmProveedores.controls.direccionProveedor.invalid && frmProveedores.controls.direccionProveedor.dirty">Este campo es obligatorio</label>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Telefono" formControlName="telefonoProveedor" type="tel" style="color: #002235;">
+      </mat-form-field>
+      <label *ngIf="frmProveedores.controls.telefonoProveedor.invalid && frmProveedores.controls.telefonoProveedor.dirty">Este campo es obligatorio</label>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Ciudad" formControlName="ciudadProveedor" type="text" style="color: #002235;">
+      </mat-form-field>
+      <label *ngIf="frmProveedores.controls.ciudadProveedor.invalid && frmProveedores.controls.ciudadProveedor.dirty">Este campo es obligatorio</label>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Email" formControlName="emailProveedor" type="email" style="color: #002235;">
+      </mat-form-field>
+      <label *ngIf="frmProveedores.controls.emailProveedor.invalid && frmProveedores.controls.emailProveedor.dirty">Este campo es obligatorio</label>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="RFC" formControlName="RFCProveedor" type="text" style="color: #002235;">
+      </mat-form-field>
+      <label *ngIf="frmProveedores.controls.RFCProveedor.invalid && frmProveedores.controls.RFCProveedor.dirty">Este campo es obligatorio</label>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Razón Social" formControlName="razonSocial" type="text" style="color: #002235;">
+      </mat-form-field>
+      <label *ngIf="frmProveedores.controls.razonSocial.invalid && frmProveedores.controls.razonSocial.dirty">Este campo es obligatorio</label>
+    </form>
+  </div>
+  <div class="modal-footer" style="background-color: #173d63;">
+    <button mat-stroked-button [disabled]="frmProveedores.invalid" (click)="ejecutarPeticion()" class="btnAceptar">Agregar</button>
+  </div>
+</ng-template>

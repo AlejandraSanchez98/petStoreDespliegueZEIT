@@ -1,0 +1,103 @@
+.fondo{
+  background: url('../../assets/img/fondo53.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: top;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+.card {
+  max-width: 340px;
+  background-color: ghostwhite;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 15px;
+  height: 550px;
+}
+
+.header-image {
+  background-image: url('../../assets/img/logo.png');
+  background-size: cover;
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+  margin-left: 34%;
+  margin-right: 35%;
+}
+
+.mat-card-avatar {
+  border-radius: 20%;
+}
+
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+  text-align: center;
+}
+
+.main-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnIniciarSesion{
+  width: 90%;
+  margin-bottom: 20px;
+  margin-left: 15px;
+  margin-right: 10px;
+  font-size: 25px;
+  color: #152956;
+  margin-top: 30px;
+  border-radius: 11px;
+}
+
+.selectTipo{
+  text-align: center;
+  width: 100%;
+}
+
+.titulo{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 11px;
+  margin-bottom: 11px;
+  display: table;
+  padding-top: 0px;
+  width: 40%;
+}
+
+label{
+  color: rgb(207, 40, 40);
+  margin-left: 70px;
+}
+
+input{
+  color: #002235;
+}
+
+
+
+
+::ng-deep .mat-focused {
+  color: #052027 !important;
+ }
+
+::ng-deep.mat-form-field-underline {
+  background-color: #052027 !important;
+  border-color: #052027 !important;
+}
+
+::ng-deep.mat-form-field-label{/*color del label*/
+  color: #052027 !important;
+}
+::ng-deep.mat-input-element {/*color del punto de insercion (parpadeo de barra vertical al escribir)*/
+    caret-color: #052027 !important;
+}

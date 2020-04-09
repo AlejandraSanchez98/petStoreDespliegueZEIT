@@ -1,0 +1,32 @@
+<div class="fondo">
+  <div class="main-div">
+    <mat-card class="card">
+      <mat-card-header>
+        <div mat-card-avatar class="header-image"></div>
+      </mat-card-header>
+      <img class="titulo" src="../../assets/img/titulo.png">
+      <mat-card-content>
+        <form class="form" style="margin-top: 40px;">
+          <mat-form-field class="example-full-width">
+            <mat-icon matPrefix style="color:#152956">person</mat-icon>
+            <input matInput type="text" placeholder="Nombre de usuario" [formControl]="nombreUsuario" (keyup)="validarFormulario()"  >
+          </mat-form-field>
+          <label *ngIf="nombreUsuario.invalid && nombreUsuario.dirty">Este campo es obligatorio</label>
+          <mat-form-field class="example-full-width" >
+            <mat-icon matPrefix style="color: #152956">lock</mat-icon>
+            <input matInput type="password" placeholder="Password"  [formControl]="password" (keyup)="validarFormulario()">
+          </mat-form-field>
+          <label *ngIf="password.invalid && password.dirty">Este campo es obligatorio</label>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-stroked-button class="btnIniciarSesion" [disabled]="!formValid" (click)="login()" style="color: white;background-color: #19284c;"> <b>INICIAR SESIÓN</b> </button>
+        <div align="center">
+          <button mat-button style="color:#19284c;font-weight: bold;font-size:16px;" routerLink="/enviarCorreo">¿Olvidaste tu contraseña?</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <app-template-progress-spinner id="spinnerLogin" class="example-margin" [color]="color" [mode]="mode" [value]="value" [backdropEnabled]="true" [positionGloballyCenter]="true"[displayProgressSpinner]="displayProgressSpinner">
+  </app-template-progress-spinner>
+</div>

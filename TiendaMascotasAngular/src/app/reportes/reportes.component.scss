@@ -1,0 +1,171 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.dropdown-toggle::after {
+    display:none;
+}
+
+
+.invisible-scrollbar ::ng-deep ::-webkit-scrollbar {
+  overflow:initial;
+}
+
+
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(39, 38, 38, 0.5);
+}
+
+.logoPaginas{
+  margin: 10px;
+  display: table;
+  padding-top: 0px;
+  width: 160px;
+  margin-left: 20px;
+}
+
+table {
+  width: 100%;
+  background-color:rgba(130, 154, 224, 0.7);
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 35%;
+  text-align: center;
+}
+
+th{
+  font-weight: bold;
+  color:#002255d9;
+  font-size: 17px;
+  background-color: #eeeef9;
+}
+
+td{
+  color:#1b2a3a;
+  text-align: center;
+  background-color: #eeeef9;
+  cursor: default;
+}
+
+ table, td,th{
+  border: 1px solid #e3e8ea;
+ }
+
+.toolbar{
+  background-color: #2d5277;
+  width: 100%;
+  height: 8%;
+  position: fixed;
+  z-index: 100;
+}
+
+h2{
+  text-align: center;
+  margin: 30px;
+  cursor: default;
+}
+
+.card {
+  background-color: #eeeef9;
+  margin-bottom: 20px;
+}
+
+.btnAceptar{
+  color: white;
+  border-color: white;
+  width: 30%;
+}
+
+
+.tabIcono {
+  margin-right: 8px;
+}
+
+.cardTab{
+  background-color: #ffffffc7;
+  border-color: #091c2d;
+  margin-bottom: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 80px;
+}
+
+.tablaTab1{
+  margin-top: 40px;
+}
+
+:host ::ng-deep .mat-sort-header-container {
+    display: flex;
+    justify-content: center;
+}
+
+::ng-deep .mat-tab-label{
+  color: #0d2946;
+  background-color: #eff0f9fc;
+  font-size: 15px;
+}
+
+//PERSONALIZAR EL COLOR DE INPUT
+::ng-deep .mat-focused {/*cambia el color del label cuando se enfoca*/
+  color: #052027 !important;
+ }
+
+::ng-deep.mat-form-field-underline { /*cambia el color del subrayado*/
+  background-color: #052027 !important;
+  border-color: #052027 !important;
+}
+/*::ng-deep.mat-form-field-ripple {//cambiar el color del subrayado cuando se enfoca
+ background-color: #052027 !important;
+ border-color: #052027 !important;
+}*/
+::ng-deep.mat-form-field-label{/*color del label*/
+  color: #052027 !important;
+}
+::ng-deep.mat-input-element {/*color del punto de insercion (parpadeo de barra vertical al escribir)*/
+    caret-color: #052027 !important;
+}
+
+::ng-deep .mat-list-base .mat-list-item {
+  color: #002235;
+  border-bottom: 1.5px solid #d4dde4;
+  cursor:pointer;
+}
+
+::ng-deep .mat-select-value {
+    color: #002235;
+}
+
+::ng-deep .mat-select-arrow  {
+    color: #002235;
+}
+
+::ng-deep .mat-paginator, .mat-paginator-page-size .mat-select-trigger{
+  color: #002235;
+  font-size: 15px;
+  cursor: default;
+}
+
+::ng-deep .mat-icon-button[disabled][disabled]{
+  color: #002235;
+}
+
+
+//Margenes del sidenav
+mat-sidenav-content{
+  margin-right: 0 !important;
+}
+
+.mat-list-item{
+  height: 45px !important;
+}

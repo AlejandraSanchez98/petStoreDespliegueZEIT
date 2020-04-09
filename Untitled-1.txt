@@ -1,0 +1,26 @@
+https://articulo.mercadolibre.com.mx/MLM-724189999-blusa-bordada-a-maquina-de-chiapas-talla-xs-pavo-real-fl-1-_JM?quantity=1&variation=44250459487#position=3&type=item&tracking_id=aecdc830-6aa1-43c5-9f0e-e8b3aad913dd
+
+for (let j = 0; j < productos.length; j++) {
+    let query = `SELECT stock FROM Productos WHERE idProducto = ${productos[j].idProducto}`;
+    database.query(query, function (error, success) {
+        if (error) {
+            reject({
+				estatus: -1,
+				respuesta:error
+			});
+			return;
+		}
+        if (j==productos.length -1  && productos[j].cantidadProductos < success[0].stock ) {
+            resolve({
+                estatus: 1,
+                respuesta: 'Cantidad en existencia'
+                });
+        }
+		else {
+			reject({
+				estatus: -1,
+				respuesta: 'No se tiene esta cantidad en existencia'
+			});
+		}
+	});
+}

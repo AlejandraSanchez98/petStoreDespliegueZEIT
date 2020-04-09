@@ -1,0 +1,240 @@
+<div class="fondo">
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="push" [(opened)]="opened" style="background-color:rgba(231, 235, 241, 0.98);">
+      <img class="logoPaginas" src="../../assets/img/logoPaginas.png">
+      <mat-list role="list" style="margin-top: 30px;">
+        <mat-list-item role="listitem" routerLink="/clientes">
+          <mat-icon>group</mat-icon>&nbsp;&nbsp;Usuarios
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/productos">
+          <mat-icon>storefront</mat-icon>&nbsp;&nbsp;Productos
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/metodoPago">
+          <mat-icon>local_atm</mat-icon>&nbsp;&nbsp;Metodo De Pago
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/transacciones">
+          <mat-icon>sync_alt</mat-icon>&nbsp;&nbsp;Transacciones
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/devoluciones">
+          <mat-icon>rotate_90_degrees_ccw</mat-icon>&nbsp;&nbsp;Devoluciones
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/compras">
+          <mat-icon>local_atm</mat-icon>&nbsp;&nbsp;Compras Proveedor
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/carrito">
+          <mat-icon>shopping_cart</mat-icon>&nbsp;&nbsp;Carrito
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/envios">
+          <mat-icon>storefront</mat-icon>&nbsp;&nbsp;Envios
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/reportes">
+          <mat-icon>assignment</mat-icon>&nbsp;&nbsp;Reportes
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/accesos">
+          <mat-icon>lock_open</mat-icon>&nbsp;&nbsp;Bitacora De Accesos
+        </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content style="background-color: rgba(247, 247, 247, 0.95);">
+      <mat-toolbar class="toolbar">
+        <mat-toolbar-row>
+          <button mat-button (click)="sidenav.toggle()" style="font-size:20px; padding-top:5px;" matTooltip="Menú Principal">MENÚ&nbsp;<mat-icon style="font-size:30px; padding-bottom: 36px;"> menu_open</mat-icon></button>
+          <span class="example-spacer"></span>
+          <h4 style="padding-top:5px; float: left;cursor:default;"><b>Bienvenido {{usuarioEnSesion}}</b></h4>
+          <div ngbDropdown role="group">
+            <button mat-button ngbDropdownToggle style="margin-left: 20px;background-color: #466c90;" matTooltip="Cerrar Sesión"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">exit_to_app</mat-icon></button>
+            <div class="dropdown-menu" ngbDropdownMenu style="padding:20px">
+              <h6 ngbDropdownItem style="margin-top:20px;margin-bottom:20px;float: right;color: #15376b;cursor:default"><b>Tipo de usuario: </b> {{rolUsuario}}</h6>
+              <button ngbDropdownItem (click)=cerrarSesion() style="color: white;background-color:rgb(38, 83, 128);border-radius:3px;text-align:center">Cerrar Sesión</button>
+            </div>
+          </div>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <br>
+      <br>
+      <mat-card class="cardTab">
+        <mat-tab-group>
+          <mat-tab>
+            <ng-template  mat-tab-label style="color: white; background-color:#161931fc;">
+              <mat-icon  class = "tabIcono"> rotate_90_degrees_ccw </mat-icon>Devoluciones
+            </ng-template>
+            <h2 style="font-weight: bold; color:#002255d9;margin-top:20px;">Devoluciones&nbsp;&nbsp;<mat-icon style="font-size: 40px;">rotate_90_degrees_ccw</mat-icon></h2>
+            <div style="margin: 50px;">
+              <mat-card class="card">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-9">
+                      <mat-form-field>
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar :">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-3">
+                      <button mat-button style="background-color: rgb(38, 83, 128);height: 50px;" matTooltip="Agregar Devolución" (click)="openAgregar(content)">
+                        <mat-icon style="color: white">add</mat-icon>Agregar Devolución
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" matSort>
+                  <ng-container matColumnDef="idDevolucion">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                    <td mat-cell *matCellDef="let row"> {{row.idDevolucion}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="montoDevolucion">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Monto De La Devolución </th>
+                    <td mat-cell *matCellDef="let row"> {{row.montoDevolucion}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="motivoDevolucion">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Motivo De La Devolución </th>
+                    <td mat-cell *matCellDef="let row"> {{row.motivoDevolucion}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="nombreCliente">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Cliente </th>
+                    <td mat-cell *matCellDef="let row"> {{row.nombreCliente}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="tipoDevolucion">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo De Devolución  </th>
+                    <td mat-cell *matCellDef="let row"> {{row.tipoDevolucion}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="nombreProducto">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Producto </th>
+                    <td mat-cell *matCellDef="let row"> {{row.nombreProducto}} </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator #MatPaginatorDevoluciones [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" style="background-color: #abaeb1;"></mat-paginator>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template  mat-tab-label>
+              <mat-icon  class="tabIcono"> settings_backup_restore </mat-icon>Tipos De Devoluciones
+            </ng-template>
+            <h2 style="font-weight: bold; color:#002255d9;margin-top:20px;">Tipos De Devoluciones&nbsp;&nbsp;<mat-icon style="font-size: 40px;">settings_backup_restore</mat-icon></h2>
+            <div style="margin: 30px;">
+              <mat-card class="card">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-8">
+                      <mat-form-field>
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar :">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <button mat-button style="background-color: rgb(38, 83, 128);height: 50px;" matTooltip="Agregar Tipo De Devolución" (click)=" openAgregarTiposDevoluciones(contentTiposDevoluciones)">
+                        <mat-icon style="color: white;">add</mat-icon> Agregar Tipo De Devolución
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dsTiposDevoluciones" matSort>
+                  <ng-container matColumnDef="idTipoDevolucion">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                    <td mat-cell *matCellDef="let row"> {{row.idTipoDevolucion}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="tipoDevolucion">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo De Devolución </th>
+                    <td mat-cell *matCellDef="let row"> {{row.tipoDevolucion}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="descripcion">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
+                    <td mat-cell *matCellDef="let row"> {{row.descripcion}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+                    <td mat-cell *matCellDef="let row">
+                      <button mat-mini-fab style="margin-left: 10px;background-color:rgb(222, 95, 5);" matTooltip="Editar Tipo De Devolución" (click)="openEditarTiposDevoluciones(contentTiposDevoluciones, row.idTipoDevolucion, row.tipoDevolucion,row.descripcion)">
+                        <mat-icon style="color: white">edit_attributes</mat-icon>
+                      </button>
+                      <button mat-mini-fab style="margin-left: 10px;background-color: rgb(160, 8, 8);" matTooltip="Eliminar Tipo De Devolución" (click)="eliminarTipoDevolucion(row.idTipoDevolucion)">
+                        <mat-icon style="color: white">delete_sweep</mat-icon>
+                      </button>
+                    </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumnsTiposDevoluciones"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumnsTiposDevoluciones;"></tr>
+                </table>
+                <mat-paginator #MatPaginatorTiposDevoluciones [pageSize]="5"  [pageSizeOptions]="[5, 10, 25, 100]" style="background-color: #abaeb1;"></mat-paginator>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card>
+
+      <!--Modal Devoluciones-->
+      <ng-template #content let-modal>
+        <div class="modal-header" style="background-color: #2d5277;">
+          <h3 class="modal-title" id="modal-basic-title" style="color: white;"> Agregar Devolución </h3>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="background-color: rgba(241, 244, 247, 0.72);">
+          <form class="form" [formGroup]="frmDevoluciones" style="margin-left: 30px; margin-right: 30px;">
+            <input formControlName="idDevolucion" type="hidden">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Monto De La Devolución" formControlName="montoDevolucion" type="number" style="color: #002235;">
+            </mat-form-field>
+            <label *ngIf="frmDevoluciones.controls.montoDevolucion.invalid && frmDevoluciones.controls.montoDevolucion.dirty">Este campo es obligatorio</label>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Motivo De La Devolución" formControlName="motivoDevolucion" type="text" style="color: #002235;">
+            </mat-form-field>
+            <label *ngIf="frmDevoluciones.controls.motivoDevolucion.invalid && frmDevoluciones.controls.motivoDevolucion.dirty">Este campo es obligatorio</label>
+            <mat-form-field>
+              <mat-select formControlName="idCliente" placeholder="Cliente" >
+                <mat-option *ngFor="let i of arregloClientesSelect" [value]="i.idCliente">{{ i.nombreCliente }} </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <label *ngIf="frmDevoluciones.controls.idCliente.invalid && frmDevoluciones.controls.idCliente.dirty">Este campo es obligatorio</label>
+            <mat-form-field>
+              <mat-select formControlName="idTipoDevolucion" placeholder="Tipo De Devolución" >
+                <mat-option *ngFor="let i of arregloTipoDevolucionSelect" [value]="i.idTipoDevolucion">{{ i.tipoDevolucion }} </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <label *ngIf="frmDevoluciones.controls.idTipoDevolucion.invalid && frmDevoluciones.controls.idTipoDevolucion.dirty">Este campo es obligatorio</label>
+            <mat-form-field>
+              <mat-select formControlName="idProducto" placeholder="Producto" >
+                <mat-option *ngFor="let i of arregloProductosSelect" [value]="i.idProducto">{{ i.nombreProducto }} </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <label *ngIf="frmDevoluciones.controls.idProducto.invalid && frmDevoluciones.controls.idProducto.dirty">Este campo es obligatorio</label>
+          </form>
+        </div>
+        <div class="modal-footer" style="background-color:  #173d63;">
+          <button mat-stroked-button [disabled]="frmDevoluciones.invalid" (click)="agregarDevolucion()" class="btnAceptar">Agregar</button>
+        </div>
+      </ng-template>
+
+      <!-- Modal Tipos De Devoluciones -->
+      <ng-template #contentTiposDevoluciones let-modal>
+        <div class="modal-header" style="background-color:  #2d5277;">
+          <h3 class="modal-title" id="modal-basic-title" style="color: white;"> {{titulo}} </h3>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="background-color: rgba(241, 244, 247, 0.72);">
+          <form class="form" [formGroup]="frmTiposDevoluciones" style="margin-left: 30px; margin-right: 30px;">
+            <input formControlName="idTipoDevolucion" type="hidden">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Tipo De Devolución" formControlName="tipoDevolucion" type="text" style="color: #002235;">
+            </mat-form-field>
+            <label *ngIf="frmTiposDevoluciones.controls.tipoDevolucion.invalid && frmTiposDevoluciones.controls.tipoDevolucion.dirty">Este campo es obligatorio</label>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Descripción" formControlName="descripcion" type="text" style="color: #002235;">
+            </mat-form-field>
+            <label *ngIf="frmTiposDevoluciones.controls.descripcion.invalid && frmTiposDevoluciones.controls.descripcion.dirty">Este campo es obligatorio</label>
+          </form>
+        </div>
+        <div class="modal-footer" style="background-color: #173d63;">
+          <button mat-stroked-button [disabled]="frmTiposDevoluciones.invalid" (click)="ejecutarPeticionTiposDevoluciones()" class="btnAceptar">Aceptar</button>
+        </div>
+      </ng-template>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

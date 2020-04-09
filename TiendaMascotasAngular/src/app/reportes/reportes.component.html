@@ -1,0 +1,174 @@
+<div class="fondo">
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="push" [(opened)]="opened" style="background-color:rgba(231, 235, 241, 0.98);">
+      <img class="logoPaginas" src="../../assets/img/logoPaginas.png">
+      <mat-list role="list" style="margin-top: 30px;">
+        <mat-list-item role="listitem" routerLink="/clientes">
+          <mat-icon>group</mat-icon>&nbsp;&nbsp;Usuarios
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/productos">
+          <mat-icon>storefront</mat-icon>&nbsp;&nbsp;Productos
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/metodoPago">
+          <mat-icon>local_atm</mat-icon>&nbsp;&nbsp;Metodo De Pago
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/transacciones">
+          <mat-icon>sync_alt</mat-icon>&nbsp;&nbsp;Transacciones
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/devoluciones">
+          <mat-icon>rotate_90_degrees_ccw</mat-icon>&nbsp;&nbsp;Devoluciones
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/compras">
+          <mat-icon>local_atm</mat-icon>&nbsp;&nbsp;Compras Proveedor
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/carrito">
+          <mat-icon>shopping_cart</mat-icon>&nbsp;&nbsp;Carrito
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/envios">
+          <mat-icon>storefront</mat-icon>&nbsp;&nbsp;Envios
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/reportes">
+          <mat-icon>assignment</mat-icon>&nbsp;&nbsp;Reportes
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/accesos">
+          <mat-icon>lock_open</mat-icon>&nbsp;&nbsp;Bitacora De Accesos
+        </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content style="background-color: rgba(247, 247, 247, 0.95);">
+      <mat-toolbar class="toolbar">
+        <mat-toolbar-row>
+          <button mat-button (click)="sidenav.toggle()" style="font-size:20px; padding-top:5px;" matTooltip="Menú Principal">MENÚ&nbsp;<mat-icon style="font-size:30px; padding-bottom: 36px;"> menu_open</mat-icon></button>
+          <span class="example-spacer"></span>
+          <h4 style="padding-top:5px; float: left;cursor:default;"><b>Bienvenido {{usuarioEnSesion}}</b></h4>
+          <div ngbDropdown role="group">
+            <button mat-button ngbDropdownToggle style="margin-left: 20px;background-color: #466c90;" matTooltip="Cerrar Sesión"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">exit_to_app</mat-icon></button>
+            <div class="dropdown-menu" ngbDropdownMenu style="padding:20px">
+              <h6 ngbDropdownItem style="margin-top:20px;margin-bottom:20px;float: right;color: #15376b;cursor:default"><b>Tipo de usuario: </b> {{rolUsuario}}</h6>
+              <button ngbDropdownItem (click)=cerrarSesion() style="color: white;background-color:rgb(38, 83, 128);border-radius:3px;text-align:center">Cerrar Sesión</button>
+            </div>
+          </div>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <br>
+      <br>
+      <mat-card class="cardTab">
+        <h2 style="font-weight: bold; color:#002255d9;">Reportes&nbsp;&nbsp;<mat-icon style="font-size: 40px;">assignment</mat-icon></h2>
+        <mat-tab-group>
+          <mat-tab>
+            <ng-template  mat-tab-label style="color: white;">
+              <mat-icon  class = "tabIcono"> add_shopping_cart </mat-icon>Productos más vendidos
+            </ng-template>
+            <div class="tablaTab1">
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" matSort>
+                  <ng-container matColumnDef="idProducto">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                    <td mat-cell *matCellDef="let row"> {{row.idProducto}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="Producto">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Producto</th>
+                    <td mat-cell *matCellDef="let row"> {{row.Producto}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="TotalVentas">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. Productos Vendidos </th>
+                    <td mat-cell *matCellDef="let row"> {{row.TotalVentas}} </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator [length]="5" [pageSize]="5" [pageSizeOptions]="[5]"  style="background-color: #abaeb1;"></mat-paginator>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template  mat-tab-label style="color: white;">
+              <mat-icon  class="tabIcono"> person_add </mat-icon>Vendedor con más ventas
+            </ng-template>
+            <div class="tablaTab1">
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dsVendedoresMasVentas" matSort>
+                  <ng-container matColumnDef="idUsuario">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                    <td mat-cell *matCellDef="let row"> {{row.idUsuario}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="Vendedor">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Vendedor</th>
+                    <td mat-cell *matCellDef="let row"> {{row.Vendedor}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="ImporteVenta">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Monto Total De Ventas </th>
+                    <td mat-cell *matCellDef="let row"> $ {{row.ImporteVenta}} </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="dcVendedoresMasVentas"></tr>
+                  <tr mat-row *matRowDef="let row; columns: dcVendedoresMasVentas;"></tr>
+                </table>
+                <mat-paginator [length]="5" [pageSize]="5" [pageSizeOptions]="[5]" style="background-color: #abaeb1;"></mat-paginator>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template  mat-tab-label style="color: white;">
+              <mat-icon  class ="tabIcono"> remove_shopping_cart </mat-icon>Productos con stock mínimo
+            </ng-template>
+            <div class="tablaTab1">
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dsProductoStockMinimo" matSort >
+                  <ng-container matColumnDef="idProducto">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="  width: 5%;"> ID </th>
+                    <td mat-cell *matCellDef="let row" style="  width: 20%;text-align: center;"> {{row.idProducto}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="nombreProducto">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="  width: 5%;"> Producto</th>
+                    <td mat-cell *matCellDef="let row" style="  width: 20%;text-align: center;"> {{row.nombreProducto}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="precioUnitario">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="  width: 5%;"> Precio Unitario </th>
+                    <td mat-cell *matCellDef="let row" style="  width: 20%;text-align: center;"> $ {{row.precioUnitario}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="descripcionProducto">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="  width: 5%;"> Descripción Del Producto </th>
+                    <td mat-cell *matCellDef="let row" style="  width: 20%;text-align: center;"> {{row.descripcionProducto}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="stock">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="  width: 5%;"> Stock </th>
+                    <td mat-cell *matCellDef="let row" style="  width: 20%;text-align: center;"> {{row.stock}} </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="dcProductoStockMinimo"></tr>
+                  <tr mat-row *matRowDef="let row; columns: dcProductoStockMinimo;"></tr>
+                </table>
+                <mat-paginator #MatPaginatorProductosStockMinimo [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" style="background-color: #abaeb1;"></mat-paginator>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template  mat-tab-label style="color: white;">
+              <mat-icon  class ="tabIcono"> attach_money </mat-icon>Utilidad
+            </ng-template>
+            <div class="tablaTab1">
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dsUtilidad" matSort>
+                  <ng-container matColumnDef="MontoTotalVentas">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Monto Total Ventas </th>
+                    <td mat-cell *matCellDef="let row"> ${{row.MontoTotalVentas}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="MontoTotalCompras">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Monto Total Compras</th>
+                    <td mat-cell *matCellDef="let row"> ${{row.MontoTotalCompras}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="Utilidad">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Utilidad </th>
+                    <td mat-cell *matCellDef="let row"> ${{row.Utilidad}} </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="dcUtilidad"></tr>
+                  <tr mat-row *matRowDef="let row; columns: dcUtilidad;"></tr>
+                </table>
+                <mat-paginator #MatPaginatorUtilidad [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" style="background-color: #abaeb1;"></mat-paginator>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,35 @@
+<div class="fondo">
+  <div class="main-div">
+    <mat-card class="card">
+      <mat-card-header>
+        <div mat-card-avatar class="header-image"></div>
+      </mat-card-header>
+      <img class="titulo" src="../../assets/img/titulo.png">
+      <mat-card-content>
+        <form class="form" style="margin-top: 40px;" [formGroup]="frmCambiarContrasenia">
+          <mat-form-field class="example-full-width">
+            <mat-icon matPrefix style="color:#152956">lock</mat-icon>
+            <input matInput placeholder="Ingrese la nueva Contraseña" formControlName="contrasenia" type="password">
+          </mat-form-field>
+          <label *ngIf="frmCambiarContrasenia.controls.contrasenia.invalid && frmCambiarContrasenia.controls.contrasenia.dirty">Este campo es obligatorio</label>
+
+          <mat-form-field class="example-full-width">
+            <mat-icon matPrefix style="color:#152956">offline_pin</mat-icon>
+            <!--input matInput placeholder="Confirmar Contraseña"  (keyup)="confirmarPassword($event)" formControlName="confirmarContrasenia" type="password"-->
+            <input formControlName="confirmarContrasenia" matInput placeholder="Confirmar contraseña" type="password" (keyup)=confirmarPassword($event)>
+          </mat-form-field>
+          <label *ngIf="!this.contraseniaIgual &&  frmCambiarContrasenia.controls.confirmarContrasenia.dirty">Es necesario confirmar la contraseña</label>
+
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-stroked-button [disabled]="frmCambiarContrasenia.invalid || !this.contraseniaIgual" class="btnIniciarSesion" (click)="cambiarPassword()"><b>CONTINUAR</b></button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <section class="example-section">
+    <button mat-raised-button color="primary" (click)="showProgressSpinner()">Spinner With Backdrop</button>
+  </section>
+  <app-template-progress-spinner id="spinnerLogin" class="example-margin" [color]="color" [mode]="mode" [value]="value" [backdropEnabled]="true" [positionGloballyCenter]="true"[displayProgressSpinner]="displayProgressSpinner">
+  </app-template-progress-spinner>
+</div>

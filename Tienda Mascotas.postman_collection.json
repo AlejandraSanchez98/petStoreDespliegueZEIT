@@ -1,0 +1,2202 @@
+{
+	"info": {
+		"_postman_id": "ab79f9a3-8804-4507-875e-6efd97b22a11",
+		"name": "Tienda Mascotas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "categoria",
+			"item": [
+				{
+					"name": "listarCategorias",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcyMjk4Mzc5fQ.LHeV71XJcyndTus5Ko7eHxa9ToJFTl4OKWh27EjYHDE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/categoria/listarCategorias",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categoria",
+								"listarCategorias"
+							]
+						},
+						"description": ">Regresa la lista de todas las  \"Categorias\" de los productos\n\n**Nota:** No se necesitan parametros especificos para realizar esta petición"
+					},
+					"response": []
+				},
+				{
+					"name": "agregarCategoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"nombreCategoria\": \"Juguetes\",\n   \"subCategoria\": \"Perros\",\n   \"descripcion\": \"toda clase de perros\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/categoria/agregarCategoria",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categoria",
+								"agregarCategoria"
+							]
+						},
+						"description": ">Agregar una nueva Categoria \n\n>El body debe tener 3 valores: nombreCategoria (string), subCategoria (string), descripcion (string)\n\t\n>**NOTA:** nombreCategoria(Mascotas,Articulos,Alimentos,Juguetes)"
+					},
+					"response": []
+				},
+				{
+					"name": "modificarCategoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"nombreCategoria\": \"Articulos\",\n   \"subCategoria\": \"Collares\",\n   \"descripcion\": \"Toda clase de collares\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/categoria/modificarCategoria/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categoria",
+								"modificarCategoria",
+								"2"
+							]
+						},
+						"description": ">Modifica la categoria especificada en la URL:\n\n>Parámetro requerido en la URL: idCategoria\n\n>El body debe tener 3 valores:nombreCategoria (string), subCategoria (string), descripcion (string)"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarCategoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/categoria/eliminarCategoria/3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categoria",
+								"eliminarCategoria",
+								"3"
+							]
+						},
+						"description": ">Elimina la categoria especificada en la URL\n\n>Parámetro requerido en la URL: idCategoria\n\n>Body: No requerido"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "proveedores",
+			"item": [
+				{
+					"name": "listarProveedores",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/proveedores/listarProveedores",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"proveedores",
+								"listarProveedores"
+							]
+						},
+						"description": ">Regresa la lista de todos los \"Proveedores\" registrados\n\n**Nota:** No se necesitan parametros especificos para realizar esta petición"
+					},
+					"response": []
+				},
+				{
+					"name": "agregarProveedor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreProveedor\": \"TonatiuhProveedor1\",\n    \"direccionProveedor\": \"Juarez #103\",\n    \"telefonoProvraeedor\": \"462-222-10-47\",\n    \"ciudadProveedor\": \"Guadalajara\",\n    \"emailProveedor\": \"carlosR@gmail.com\",\n    \"RFCProveedor\": \"RCE52389\",\n    \"razonSocial\": \"PEDIGREE S.A.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/proveedores/agregarProveedor",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"proveedores",
+								"agregarProveedor"
+							]
+						},
+						"description": ">Agregar un nuevo Proveedor \n\n>El body debe tener 7 valores: nombreProveedor (string), direccionProveedor (string), telefonoProveedor (string), ciudadProveedor (string), emailProveedor(string), RFCProveedor(string), razonSocial(string)"
+					},
+					"response": []
+				},
+				{
+					"name": "modificarProveedores",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreProveedor\": \"Carlos Eduardo Rivera\",\n    \"direccionProveedor\": \"juarez #103\",\n    \"telefonoProveedor\": 4292221047,\n    \"ciudadProveedor\": \"Abasolo\",\n    \"emailProveedor\": \"carlosR@gmail.com\",\n    \"RFCProveedor\": \"RCE52389\",\n    \"razonSocial\": \"Arambula S.A de C.V.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/proveedores/modificarProveedor/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"proveedores",
+								"modificarProveedor",
+								"2"
+							]
+						},
+						"description": ">Modifica el proveedor  especificado en la URL:\n\n>Parámetro requerido en la URL: idProveedor\n\n>El body debe tener 7 valores: nombreProveedor (string), direccionProveedor (string), telefonoProveedor (string), ciudadProveedor (string), emailProveedor(string), RFCProveedor(string), razonSocial(string)"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarProveedor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/proveedores/eliminarProveedor/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"proveedores",
+								"eliminarProveedor",
+								"2"
+							]
+						},
+						"description": ">Elimina el proveedor especificado en la URL\n\n>Parámetro requerido en la URL: idProveedor\n\n>Body: No requerido"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "reportes",
+			"item": [
+				{
+					"name": "calcularUtilidad",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/utilidad/calcularUtilidad",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"utilidad",
+								"calcularUtilidad"
+							]
+						},
+						"description": ">Regresa el monto total de ventas\n\n>Regresa el monto total de Compras \n\n>Regresa la utilidad (monto total de todas las ventas - el monto total de todas las compras)\n\n>**Nota:** No se necesitan parametros especificos para realizar esta petición"
+					},
+					"response": []
+				},
+				{
+					"name": "productosMasVendidos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/productosMasVendidos/productosMasVendidos",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"productosMasVendidos",
+								"productosMasVendidos"
+							]
+						},
+						"description": ">Regresa la lista de los 5 productos más vendidos\n\n>**Nota:** No se necesitan parametros especificos para realizar esta petición"
+					},
+					"response": []
+				},
+				{
+					"name": "vendedoresMasVentas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/vendedoresMasVentas/vendedoresMasVentas",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vendedoresMasVentas",
+								"vendedoresMasVentas"
+							]
+						},
+						"description": ">Regresa los usuarios de tipo \"Vendedores\" con mas ventas \n\n>**Nota:** No se necesitan parametros especificos para realizar esta petición"
+					},
+					"response": []
+				},
+				{
+					"name": "productoStockMinimo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/productoStockMinimo/productoStockMinimo",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"productoStockMinimo",
+								"productoStockMinimo"
+							]
+						},
+						"description": ">Regresa los productos que tienen stock <= 5"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "viaEnvio",
+			"item": [
+				{
+					"name": "listarMediosEnvios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/viaEnvios/listarMediosEnvios",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"viaEnvios",
+								"listarMediosEnvios"
+							]
+						},
+						"description": ">Regresa la lista de todos los  \"Medios de envio\" registrados\n\n**Nota:** No se necesitan parametros especificos para realizar esta petición"
+					},
+					"response": []
+				},
+				{
+					"name": "agregarMedioEnvio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"medioEnvio\":\"FedEx\",\n    \"descripcion\":\"entrega de producto mas rapida \"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/viaEnvios/agregarMedioEnvio",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"viaEnvios",
+								"agregarMedioEnvio"
+							]
+						},
+						"description": ">Agregar un nuevo medio de envio \n\n>El body debe tener 2 valores: medioEnvio (string), descripcion (string)\n\t\n>**Nota:** medioEnvio(Ejemplo: DHL,FedEx), descripcion(Ejemplo: Sucursal, Domicilio)"
+					},
+					"response": []
+				},
+				{
+					"name": "modificarMedioEnvio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"medioEnvio\":\"DHL\",\n    \"descripcion\":\"Entrega de producto más rapida \"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/viaEnvios/modificarMedioEnvio/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"viaEnvios",
+								"modificarMedioEnvio",
+								"2"
+							]
+						},
+						"description": ">Modifica el medio de envio especificado en la URL:\n\n>Parámetro requerido en la URL: idViaEnvio\n\n>El body debe tener 2 valores: medioEnvio (string), descripcion (string)"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarMedioEnvio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/viaEnvios/eliminarMedioEnvio/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"viaEnvios",
+								"eliminarMedioEnvio",
+								"2"
+							]
+						},
+						"description": ">Elimina el medio de envio especificado en la URL\n\n>Parámetro requerido en la URL: idViaEnvio\n\n>Body: No requerido"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "clientes",
+			"item": [
+				{
+					"name": "listarClientes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/clientes/listarClientes",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"clientes",
+								"listarClientes"
+							]
+						},
+						"description": ">Regresa la lista de todos los  \"Clientes\" registrados\n\n**Nota:** No se necesitan parametros especificos para realizar esta petición"
+					},
+					"response": []
+				},
+				{
+					"name": "agregarCliente",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombreCliente\": \"TonatiuhCliente\",\n    \"direccionCliente\": \"Echegaray #290\",\n    \"ciudadCliente\": \"Irapuato\",\n    \"telefonoCliente\": \"4622221047\",\n    \"emailCliente\": \"tonacliente@gmail.com\",\n    \"passwordCliente\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/clientes/agregarCliente",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"clientes",
+								"agregarCliente"
+							]
+						},
+						"description": ">Agregar un nuevo cliente\n\n>El body debe tener 6 valores: nombreCliente (string), direccionCliente (string), ciudadCliente (string), telefonoCliente (string), emailCliente (string), passwordCliente\n\n>**NOTA:** No se puede registrar el mismo Cliente más de una vez"
+					},
+					"response": []
+				},
+				{
+					"name": "modificarCliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombreCliente\": \"José Antonio\",\n    \"direccionCliente\": \"Echegaray #290\",\n    \"ciudadCliente\": \"Irapuato\",\n    \"telefonoCliente\": \"4622221048\",\n    \"emailCliente\": \"jo@gmail.com\",\n    \"passwordCliente\": \"jose1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/clientes/modificarCliente/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"clientes",
+								"modificarCliente",
+								"2"
+							]
+						},
+						"description": ">Modifica el cliente especificado en la URL:\n\n>Parámetro requerido en la URL: idCliente\n\n>El body debe tener 6 valores: nombreCliente (string), direccionCliente (string), ciudadCliente (string), telefonoCliente (string), emailCliente (string), passwordCliente"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarCliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/clientes/eliminarCliente/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"clientes",
+								"eliminarCliente",
+								"2"
+							]
+						},
+						"description": ">Elimina el cliente especificado en la URL\n\n>Parámetro requerido en la URL: idCliente\n\n>Body: No requerido"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "listarUsuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/usuarios/listarUsuarios",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuarios",
+								"listarUsuarios"
+							]
+						},
+						"description": ">Regresa la lista de todos los  \"Usuarios\" registrados\n\n**Nota:** No se necesitan parametros especificos para realizar esta petición"
+					},
+					"response": []
+				},
+				{
+					"name": "agregarUsuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreUsuario\": \"Tonatiuh\",\n\t\"telefonoUsuario\": \"462-222-10-48\",\n    \"direccionUsuario\": \"juarez #506\",\n    \"correo\": \"tonatiuh@gmail.com\",\n    \"passwordUsuario\":\"password\",\n    \"tipoUsuario\": \"Vendedor\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/usuarios/agregarUsuario",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuarios",
+								"agregarUsuario"
+							]
+						},
+						"description": ">Agregar un nuevo Usuario \n\n>El body debe tener 6 valores: nombreUsuario (string), telefonoUsuario (string), direccionUsuario (string), correo (string), passwordUsuario, tipoUsuario (string)\n\t\n>**NOTA 1:** tipoUsuario(Vendedor, Gerente)\n\n>**NOTA 2:** No se puede registrar el mismo usuario más de una vez"
+					},
+					"response": []
+				},
+				{
+					"name": "modificarUsuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombreUsuario\": \"Ricardo Martinez\",\n   \"telefonoUsuario\":\"4622221048\", \n\t\"direccionUsuario\":\"juarez #506\",\n    \"correo\": \"ricardoM@gmail.com\",\n    \"passwordUsuario\": \"ricardo123\",\n    \"tipoUsuario\": \"vendedor\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/usuarios/modificarUsuario/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuarios",
+								"modificarUsuario",
+								"2"
+							]
+						},
+						"description": ">Modifica el usuario especificado en la URL:\n\n>Parámetro requerido en la URL: idUsuario\n\n>El body debe tener 6 valores: nombreUsuario (string), telefonoUsuario (string), direccionUsuario (string), correo (string), passwordUsuario, tipoUsuario (string)"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarUsuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/usuarios/eliminarUsuario/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuarios",
+								"eliminarUsuario",
+								"2"
+							]
+						},
+						"description": ">Elimina el usuario especificado en la URL\n\n>Parámetro requerido en la URL: idUsuario\n\n>Body: No requerido"
+					},
+					"response": []
+				},
+				{
+					"name": "listarTiposUsuarios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcyMjk4Mzc5fQ.LHeV71XJcyndTus5Ko7eHxa9ToJFTl4OKWh27EjYHDE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombreUsuario\":\"Usuario1\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/usuarios/listarTiposUsuarios",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuarios",
+								"listarTiposUsuarios"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "compras",
+			"item": [
+				{
+					"name": "listarCompras",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/compras/listarCompras",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"compras",
+								"listarCompras"
+							]
+						},
+						"description": ">Regresa la lista de todas las  \"Compras\" realizadas(¿que se compró?, ¿quién lo compro? , ¿a quién se lo compro?,¿cuánto se compró?)\n\n**Nota:** No se necesitan parametros especificos para realizar esta petición"
+					},
+					"response": []
+				},
+				{
+					"name": "listarDetallesCompras",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcyMjk4Mzc5fQ.LHeV71XJcyndTus5Ko7eHxa9ToJFTl4OKWh27EjYHDE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/compras/listarComprasDetalles/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"compras",
+								"listarComprasDetalles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "agregarCompra",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"montoTotal\":1200,\n    \"idProveedor\": 1,\n    \"idUsuario\": 2,\n    \"productos\":\n\t[\n\t\t{\n\t\t\"idProducto\":1,\n\t\t\"cantidadProducto\":1\n\t\t}\n\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/compras/agregarCompra",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"compras",
+								"agregarCompra"
+							]
+						},
+						"description": ">Agregar una nueva Compra\n\n>El body de contener: montoTotal(float), idProveedor a quien se le va a realizar la compra, idUsuario del vendedor que realizó la compra, idProducto del Producto que se va a comprar y la cantidad que se va a comprar para actualizar el stock"
+					},
+					"response": []
+				},
+				{
+					"name": "listarComprasSinDetalles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcyMjk4Mzc5fQ.LHeV71XJcyndTus5Ko7eHxa9ToJFTl4OKWh27EjYHDE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/compras/listarComprasSinDetalles",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"compras",
+								"listarComprasSinDetalles"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "listarProductos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcxNzY1MjgyfQ.QsGHSV9WZdB6tcJYDRT613W12io4PjybN1slJlX2V3E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/productos/listarProductos",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"productos",
+								"listarProductos"
+							]
+						},
+						"description": ">Regresa la lista de todos los  \"Productos\" dregistrados\n\n**Nota:** No se necesitan parametros especificos para realizar esta petición"
+					},
+					"response": []
+				},
+				{
+					"name": "agregarProducto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcxNzY1MjgyfQ.QsGHSV9WZdB6tcJYDRT613W12io4PjybN1slJlX2V3E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombreProducto\": \"Collar\",\n    \"precioUnitario\": 20,\n    \"descripcionProducto\": \"Mejor diseño \",\n    \"stock\": \"2\",\n    \"idCategoria\":\"1\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/productos/agregarProducto",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"productos",
+								"agregarProducto"
+							]
+						},
+						"description": ">Agregar un nuevo producto \n\n>El body debe tener 5 valores: nombreProducto (string), precioUnitario (float), descripcionProducto (string), stock(int)"
+					},
+					"response": []
+				},
+				{
+					"name": "modificarProducto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombreProducto\": \"Croquetas\",\n    \"precioUnitario\": 600,\n    \"descripcionProducto\": \"Contiene más proteina para tu cachorro \",\n    \"stock\": \"4\",\n    \"idCategoria\":\"1\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/productos/modificarProducto/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"productos",
+								"modificarProducto",
+								"1"
+							]
+						},
+						"description": ">Modifica el producto especificado en la URL:\n\n>Parámetro requerido en la URL: idProducto\n\n>El body debe tener 6 valores: nombreProducto (string), precioUnitario (float), descripcionProducto (string), stock(int)"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarProducto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/productos/eliminarProducto/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"productos",
+								"eliminarProducto",
+								"2"
+							]
+						},
+						"description": ">Elimina el producto especificado en la URL\n\n>Parámetro requerido en la URL: idProducto\n\n>Body: No requerido"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "metodoPago",
+			"item": [
+				{
+					"name": "listarMetodosPago",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/metodoPago/listarMetodosPago",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"metodoPago",
+								"listarMetodosPago"
+							]
+						},
+						"description": ">Regresa la lista de todas los  \"Metodos de pago\" registrados\n\n**Nota:** No se necesitan parametros especificos para realizar esta petición"
+					},
+					"response": []
+				},
+				{
+					"name": "agregarMetodoPago",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"tipoPago\":\"Efectivo\"\n\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/metodoPago/agregarMetodoPago",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"metodoPago",
+								"agregarMetodoPago"
+							]
+						},
+						"description": ">Agregar un nuevo Metodo de pago \n\n>El body debe tener 1 valor: tipoPago (string)\n\t\n>**NOTA:** tipoPago(tarjeta de credito, efectivo, vales de despensa)"
+					},
+					"response": []
+				},
+				{
+					"name": "modificarMetodoPago",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"tipoPago\":\"Tarjeta de credito\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/metodoPago/modificarMetodoPago/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"metodoPago",
+								"modificarMetodoPago",
+								"2"
+							]
+						},
+						"description": ">Modifica el metodo de pago  especificado en la URL:\n\n>Parámetro requerido en la URL: idMetodoPago\n\n>El body debe tener 1 valor: tipoPago (string)"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarMetodoPago",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/metodoPago/eliminarMetodoPago/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"metodoPago",
+								"eliminarMetodoPago",
+								"2"
+							]
+						},
+						"description": ">Elimina el metodo de pago  especificado en la URL\n\n>Parámetro requerido en la URL: idMetodoPago\n\n>Body: No requerido"
+					},
+					"response": []
+				},
+				{
+					"name": "listarMetodosPagoPorID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ventas",
+			"item": [
+				{
+					"name": "listarVentas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/ventas/listarVentas",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ventas",
+								"listarVentas"
+							]
+						},
+						"description": ">Regresa la lista de todas las  \"Ventas\" realizadas (¿que se vendió?, ¿quién lo vendió? , ¿a quién se le vendió?,¿Cuál fue el método de pago?, ¿cuánto se vendió ?)\n\n**Nota:** No se necesitan parametros especificos para realizar esta petición"
+					},
+					"response": []
+				},
+				{
+					"name": "agregarVenta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"idUsuario\":3,\n\t\"idCliente\":1,\n\t\"pago\":200,\n\t\"productos\":\n\t[\n\t\t{\n\t\t\"idProducto\":1,\n\t\t\"cantidadProductos\":2\n\t\t}\n\t],\n\t\"metodoPago\":\n\t[\n\t\t{\n\t\t\"idMetodoPago\":1\n\t\t}\n\t]\n\t\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/ventas/agregarVenta",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ventas",
+								"agregarVenta"
+							]
+						},
+						"description": ">Agregar una nueva Venta\n\n>El body de contener:  idUsuario de quien va a realizar la venta,idCliente,pagp(solo en caso de que el metodo de pago sea en efectivo) idProducto del Producto que se va a vender y la cantidad que se va a vender para actualizar el stock, id del metodo de pago"
+					},
+					"response": []
+				},
+				{
+					"name": "listarVentasDetalles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcyMjk4Mzc5fQ.LHeV71XJcyndTus5Ko7eHxa9ToJFTl4OKWh27EjYHDE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/ventas/listarVentasDetalles/54",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ventas",
+								"listarVentasDetalles",
+								"54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listarVentasSinDetalles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcyMjk4Mzc5fQ.LHeV71XJcyndTus5Ko7eHxa9ToJFTl4OKWh27EjYHDE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/ventas/listarVentasSinDetalles",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ventas",
+								"listarVentasSinDetalles"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "accesos",
+			"item": [
+				{
+					"name": "listarAccesos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/accesos/listarAccesos",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"accesos",
+								"listarAccesos"
+							]
+						},
+						"description": "Regresa la lista todos los registros de los accesos de los usuarios."
+					},
+					"response": []
+				},
+				{
+					"name": "agregarAcceso",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"accion\": \"entro\",\n    \"idUsuario\": \"1\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/accesos/agregarAcceso",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"accesos",
+								"agregarAcceso"
+							]
+						},
+						"description": ">Agregar un nuevo acceso\n\n>El body debe tener 2 valores: accion (string)"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "envios",
+			"item": [
+				{
+					"name": "listarEnvios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/envios/listarEnvios",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"envios",
+								"listarEnvios"
+							]
+						},
+						"description": ">Regresa la lista de todas los \"Envios\" realizados (¿De cual venta?, ¿Cuál es el medio de envio?)\n\n**Nota:** No se necesitan parametros especificos para realizar esta petición"
+					},
+					"response": []
+				},
+				{
+					"name": "agregarEnvio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"direccion\":\"Lerdo #104\" ,\n    \"ciudad\": \"Abasolo\",\n    \"observaciones\": \"Venta realizada con exito\" ,\n    \"idVenta\": 1,\n    \"idViaEnvio\": 1\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/envios/agregarEnvio",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"envios",
+								"agregarEnvio"
+							]
+						},
+						"description": ">Agregar un nuevo envio \n\n>El body debe tener 5 valores: direccion (string), ciudad (string), onservaciones (string)"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarEnvio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/envios/eliminarEnvio/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"envios",
+								"eliminarEnvio",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "devoluciones",
+			"item": [
+				{
+					"name": "listarDevoluciones",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/devoluciones/listarDevoluciones",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"devoluciones",
+								"listarDevoluciones"
+							]
+						},
+						"description": ">Regresa la lista de todas las  \"Devoluciones\" realizadas (¿que se devolvió ?, ¿quién lo devolvió ? ,¿Cuál será la recompensa (tipo devolucion)?\n\n**Nota:** No se necesitan parametros especificos para realizar esta petición"
+					},
+					"response": []
+				},
+				{
+					"name": "agregarDevolucion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"montoDevolucion\": \"98.20\",\n    \"motivoDevolucion\": \"Producto en mal estado\",\n    \"idCliente\": 1,\n\t\"idTipoDevolucion\": 1,\n\t\"idProducto\": 3\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/devoluciones/agregarDevolucion",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"devoluciones",
+								"agregarDevolucion"
+							]
+						},
+						"description": ">Agregar una nueva devolucion\n\n>El body debe tener 5 valores: montoDevolucion(float), motivoDevolucion(string)"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "tipoDevolucion",
+			"item": [
+				{
+					"name": "listarTiposDevoluciones",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/tipoDevolucion/listarTiposDevoluciones",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tipoDevolucion",
+								"listarTiposDevoluciones"
+							]
+						},
+						"description": ">Regresa la lista de todos los  \"Tipos de devoluciones\" de los productos (Intercambio o recompensa)\n\n**Nota:** No se necesitan parametros especificos para realizar esta petición"
+					},
+					"response": []
+				},
+				{
+					"name": "agregarTipoDevolucion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"tipoDevolucion\": \"porcentaje del costo total del producto\",\n    \"descripcion\": \"se devolvera una parte del dinero que pago el cliente por el producto\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/tipoDevolucion/agregarTipoDevolucion",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tipoDevolucion",
+								"agregarTipoDevolucion"
+							]
+						},
+						"description": ">Agregar un nuevo tipo de devolucion \n\n>El body debe tener 2 valores: tipoDevolucion (string),descripcion (string)\n\t\n>**NOTA:** tipoDevolucion(Devolución de gastos de envíos,se devolvera una parte del dinero que pago el cliente por el producto)"
+					},
+					"response": []
+				},
+				{
+					"name": "modificarTipoDevolucion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"tipoDevolucion\": \"Porcentaje del costo total del producto\",\n    \"descripcion\": \"Se devolvera una parte del dinero que pago el cliente por el producto\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/tipoDevolucion/modificarTipoDevolucion/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tipoDevolucion",
+								"modificarTipoDevolucion",
+								"1"
+							]
+						},
+						"description": ">Modifica el tipo de devolución especificado en la URL:\n\n>Parámetro requerido en la URL: idDevolucion\n\n>El body debe tener 2 valores: tipoDevolucion (string),descripcion (string)"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarTipoDevolucion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwMSI6IkFBU0EyMDk4IiwiUDIiOiJXM0MwVUxEQjRDSyIsInAzIjoiNFYxQzExIiwiaWF0IjoxNTcwNzI3OTM5fQ.20k9dVqTafAfIzDlGvTO9W_rQIy9uNRdU1TZJWlZNsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/tipoDevolucion/eliminarTipoDevolucion/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tipoDevolucion",
+								"eliminarTipoDevolucion",
+								"2"
+							]
+						},
+						"description": ">Elimina el tipo de devolución especificado en la URL\n\n>Parámetro requerido en la URL: idDevolucion\n\n>Body: No requerido"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "verificarUsuario",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombreUsuario\":\"TonatiuhUsuario\",\n\t\"passwordUsuario\":\"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8\",\n\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/login/verificarUsuario",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login",
+								"verificarUsuario"
+							]
+						},
+						"description": "Logueo para ingresar\r\n\r\nsi se loguea con exito, la respuesta contendra el token, lo cual se debe usar para cada peticion (se puede ver el resultado en Productos por ahora)."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	]
+}

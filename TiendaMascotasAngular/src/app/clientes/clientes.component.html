@@ -1,0 +1,179 @@
+<div class="fondo">
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="push" [(opened)]="opened" style="background-color:rgba(230, 234, 241, 0.98); margin-right:0px" class="invisible-scrollbar">
+      <img class="logoPaginas" src="../../assets/img/logoPaginas.png">
+      <mat-list role="list" style="margin-top:20px;">
+        <mat-list-item role="listitem" routerLink="/clientes">
+          <mat-icon>group</mat-icon>&nbsp;&nbsp;&nbsp;Usuarios
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/productos">
+          <mat-icon>storefront</mat-icon>&nbsp;&nbsp;&nbsp;Productos
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/metodoPago">
+          <mat-icon>local_atm</mat-icon>&nbsp;&nbsp;&nbsp;Metodo De Pago
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/transacciones">
+          <mat-icon>sync_alt</mat-icon>&nbsp;&nbsp;&nbsp;Transacciones
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/devoluciones">
+          <mat-icon>rotate_90_degrees_ccw</mat-icon>&nbsp;&nbsp;&nbsp;Devoluciones
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/compras">
+          <mat-icon>local_atm</mat-icon>&nbsp;&nbsp;&nbsp;Compras Proveedor
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/carrito">
+          <mat-icon>shopping_cart</mat-icon>&nbsp;&nbsp;&nbsp;Carrito
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/envios">
+          <mat-icon>storefront</mat-icon>&nbsp;&nbsp;&nbsp;Envios
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/reportes">
+          <mat-icon>assignment</mat-icon>&nbsp;&nbsp;&nbsp;Reportes
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/accesos">
+          <mat-icon>lock_open</mat-icon>&nbsp;&nbsp;&nbsp;Bitacora De Accesos
+        </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content style="background-color: rgba(247, 247, 247, 0.95);margin-right:0px">
+      <mat-toolbar class="toolbar">
+        <mat-toolbar-row>
+          <button mat-button (click)="sidenav.toggle()" style="font-size:20px; padding-top:5px;" matTooltip="Menú Principal" id="idmenu">MENÚ&nbsp;<mat-icon style="font-size:30px; padding-bottom: 36px;"> menu_open</mat-icon></button>
+          <span class="example-spacer"></span>
+          <h4 style="padding-top:5px; float: left;cursor:default;"><b>Bienvenido {{usuarioEnSesion}}</b></h4>
+          <div ngbDropdown role="group">
+            <button mat-button ngbDropdownToggle style="margin-left: 20px;background-color: #466c90;" matTooltip="Cerrar Sesión"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">exit_to_app</mat-icon></button>
+            <div class="dropdown-menu" ngbDropdownMenu style="padding:20px">
+              <h6 ngbDropdownItem style="margin-top:20px;margin-bottom:20px;float: right;color: #15376b;cursor:default"><b>Tipo de usuario: </b> {{rolUsuario}}</h6>
+              <button ngbDropdownItem (click)=cerrarSesion() style="color: white;background-color:rgb(38, 83, 128);border-radius:3px;text-align:center">Cerrar Sesión</button>
+            </div>
+          </div>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <br>
+      <br>
+      <mat-card class="cardTab">
+        <mat-tab-group>
+          <mat-tab>
+            <ng-template  mat-tab-label style="color: white; background-color:#161931fc;">
+              <mat-icon  class="tabIcono">group</mat-icon>&nbsp;&nbsp;Clientes
+            </ng-template>
+            <h2 style="font-weight: bold; color:#002255d9;margin-top:20px;">Clientes&nbsp;&nbsp;<mat-icon style="font-size: 40px;">group</mat-icon></h2>
+            <mat-card class="card">
+              <div class="container">
+                <div class="row">
+                  <div class="col-9">
+                    <mat-form-field>
+                      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar :">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-3">
+                    <button mat-button style="background-color: rgb(38, 83, 128);height: 50px;" matTooltip="Agregar Cliente" (click)=" openAgregar(content)">
+                      <mat-icon style="color: white">add</mat-icon> Agregar Cliente
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+            <div class="mat-elevation-z8" style="margin:20px">
+              <table mat-table [dataSource]="dataSource" matSort>
+                <ng-container matColumnDef="idCliente">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                  <td mat-cell *matCellDef="let row"> {{row.idCliente}} </td>
+                </ng-container>
+                <ng-container matColumnDef="nombreCliente">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                  <td mat-cell *matCellDef="let row"> {{row.nombreCliente}} </td>
+                </ng-container>
+                <ng-container matColumnDef="direccionCliente">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Dirección </th>
+                  <td mat-cell *matCellDef="let row"> {{row.direccionCliente}} </td>
+                </ng-container>
+                <ng-container matColumnDef="ciudadCliente">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Ciudad </th>
+                  <td mat-cell *matCellDef="let row"> {{row.ciudadCliente}} </td>
+                </ng-container>
+                <ng-container matColumnDef="telefonoCliente">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </th>
+                  <td mat-cell *matCellDef="let row"> {{row.telefonoCliente}} </td>
+                </ng-container>
+                <ng-container matColumnDef="emailCliente">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                  <td mat-cell *matCellDef="let row"> {{row.emailCliente}} </td>
+                </ng-container>
+                <ng-container matColumnDef="acciones">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+                  <td mat-cell *matCellDef="let row">
+                    <button mat-mini-fab style="background-color:rgb(222, 95, 5);" matTooltip="Editar Cliente" (click)="openEditar(content, row.idCliente, row.nombreCliente, row.direccionCliente,row.ciudadCliente,row.telefonoCliente,row.emailCliente,row.passwordCliente)">
+                      <mat-icon style="color: white">edit_attributes</mat-icon>
+                    </button>
+                    <button mat-mini-fab style="margin-left: 10px;background-color: rgb(160, 8, 8);" matTooltip="Eliminar Cliente" (click)="eliminarCliente(row.idCliente)">
+                      <mat-icon style="color: white">delete_sweep</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" style="background-color:#abaeb1;"></mat-paginator>
+            </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template  mat-tab-label>
+              <mat-icon  class="tabIcono">supervised_user_circle</mat-icon>&nbsp;&nbsp;Usuarios
+            </ng-template>
+            <app-usuarios></app-usuarios>
+          </mat-tab>
+          <mat-tab>
+            <ng-template  mat-tab-label>
+              <mat-icon  class="tabIcono">local_shipping</mat-icon>&nbsp;&nbsp;Proveedores
+            </ng-template>
+            <app-proveedores></app-proveedores>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card>
+      <div>
+      </div>
+      <ng-template #content let-modal>
+        <div class="modal-header" style="background-color:#2d5277;">
+          <h3 class="modal-title" id="modal-basic-title" style="color: white; margin-left: auto;"> {{titulo}} </h3>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="background-color:rgba(241, 244, 247, 0.72);">
+          <form class="form" [formGroup]="frmClientes" style="margin-left: 30px; margin-right: 30px;">
+            <input formControlName="idCliente" type="hidden" >
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Nombre" formControlName="nombreCliente" type="text" style="color: #002235;">
+            </mat-form-field>
+            <label *ngIf="frmClientes.controls.nombreCliente.invalid && frmClientes.controls.nombreCliente.dirty">Este campo es obligatorio</label>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Direccion" formControlName="direccionCliente" type="text" style="color: #002235;">
+            </mat-form-field>
+            <label *ngIf="frmClientes.controls.direccionCliente.invalid && frmClientes.controls.direccionCliente.dirty">Este campo es obligatorio</label>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Ciudad" formControlName="ciudadCliente" type="text" style="color: #002235;">
+            </mat-form-field>
+            <label *ngIf="frmClientes.controls.ciudadCliente.invalid && frmClientes.controls.ciudadCliente.dirty">Este campo es obligatorio</label>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Telefono" formControlName="telefonoCliente" type="tel" style="color: #002235;">
+            </mat-form-field>
+            <label *ngIf="frmClientes.controls.telefonoCliente.invalid && frmClientes.controls.telefonoCliente.dirty">Este campo es obligatorio</label>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Email" formControlName="emailCliente" type="email" style="color: #002235;">
+            </mat-form-field>
+            <label *ngIf="frmClientes.controls.emailCliente.invalid && frmClientes.controls.emailCliente.dirty">Este campo es obligatorio</label>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Password" formControlName="passwordCliente" type="password" style="color: #002235;">
+            </mat-form-field>
+            <label *ngIf="frmClientes.controls.passwordCliente.invalid && frmClientes.controls.passwordCliente.dirty">Este campo es obligatorio</label>
+          </form>
+        </div>
+        <div class="modal-footer" style="background-color:#173d63;">
+          <button mat-stroked-button [disabled]="frmClientes.invalid" (click)="ejecutarPeticion()" class="btnAceptar">Aceptar</button>
+        </div>
+      </ng-template>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
